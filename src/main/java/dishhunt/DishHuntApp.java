@@ -1,15 +1,17 @@
 package dishhunt;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class DishHuntApp extends Application {
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/dishhunt/main-view.fxml"));
+        Scene scene = new Scene(loader.load());
         primaryStage.setTitle("Dish Hunt");
-        primaryStage.setScene(new Scene(new Label("Welcome to Dish Hunt!"), 300, 100));
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 
