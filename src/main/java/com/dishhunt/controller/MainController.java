@@ -1,4 +1,4 @@
-package dishhunt;
+package com.dishhunt.controller;
 
 import javafx.fxml.FXML;
 
