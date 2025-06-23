@@ -9,7 +9,15 @@ public class Dish {
 	private String description;
 	private List<Recipe> recipes;
 	
+	public Dish(String dishName, String cuisine, String description) {
+		this.name = dishName;
+	}
+	
 	public void addRecipe(Recipe recipe) {
-		
+		recipes.add(recipe);
+	}
+
+	public List<Recipe> getRecipes() {
+		return recipes;
 	}
 }
