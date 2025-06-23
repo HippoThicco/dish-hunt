@@ -38,6 +38,7 @@ public class RecipeService {
 	
 	public List<Recipe> getRecipesByUser(User user) {
 		List<Recipe> result = new ArrayList<>();
+		
 		for (Recipe r : recipeList) {
 			if (r.getAuthor() != null && r.getAuthor().getId() == user.getId()) {
 				result.add(r);
