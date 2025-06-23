@@ -23,7 +23,7 @@ public class User {
 		this.hashedPassword = hashedPassword;
 	}
 
-	public Object getUsername() {
+	public String getUsername() {
 		return this.username;
 	}
 }
