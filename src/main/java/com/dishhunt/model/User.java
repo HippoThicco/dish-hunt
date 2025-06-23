@@ -22,4 +22,8 @@ public class User {
 	public void setHashedPassword(String hashedPassword) {
 		this.hashedPassword = hashedPassword;
 	}
+
+	public Object getUsername() {
+		return this.username;
+	}
 }
