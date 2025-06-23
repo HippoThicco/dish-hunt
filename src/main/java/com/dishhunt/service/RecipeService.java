@@ -44,9 +44,7 @@ public class RecipeService {
 				result.add(r);
 			}
 		}
-		
+
 		return result;
 	}
-	
-	
 }
