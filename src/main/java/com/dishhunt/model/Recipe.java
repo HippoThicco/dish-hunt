@@ -19,4 +19,8 @@ public class Recipe {
 	public void setAuthor(User user) {
 		this.author = user;
 	}
+
+	public User getAuthor() {
+		return author;
+	}
 }
