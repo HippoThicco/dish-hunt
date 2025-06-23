@@ -11,4 +11,12 @@ public class Recipe {
 	private int calories;
 	private List<Ingredient> ingredients;
 	private String instructions;
+	
+	public void setDish(Dish dish) {
+		this.dish = dish;
+	}
+	
+	public void setAuthor(User user) {
+		this.author = user;
+	}
 }
