@@ -27,6 +27,9 @@ public class User {
 		this(0, username, hashedPassword, null);
 	}
 	
+	public User() {
+	}
+
 	public String getHashedPassword() {
 		return hashedPassword;
 	}
