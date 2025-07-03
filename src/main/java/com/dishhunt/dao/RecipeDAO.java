@@ -10,7 +10,7 @@ import java.util.List;
 
 public class RecipeDAO {
 
-    public void uploadRecipe(Recipe recipe) {
+    public void insertRecipe(Recipe recipe) {
         String sql = """
             INSERT INTO recipes (user_id, dish_id, title, description, calories, instructions)
             VALUES (?, ?, ?, ?, ?, ?)
