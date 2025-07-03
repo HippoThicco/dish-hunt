@@ -18,7 +18,7 @@ public class RecipeService {
 		String recipeTitle = recipe.getTitle();
 		if (recipeDAO.getRecipeByTitle(recipeTitle) != null) return false;
 
-		recipeDAO.uploadRecipe(recipe);
+		recipeDAO.insertRecipe(recipe);
 		
 		return true;
 	}
