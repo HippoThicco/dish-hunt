@@ -12,13 +12,11 @@ import com.dishhunt.model.User;
 
 public class RecipeService {
 	private final RecipeDAO recipeDAO = new RecipeDAO();
-
-	private final List<Recipe> recipeList = new ArrayList<>();
 	
 	public boolean uploadRecipe(Recipe recipe) {
 		if (recipe.getIngredients().isEmpty()) return false;
 		String recipeTitle = recipe.getTitle();
-		if (recipeDAO.getRecipeByTitle(recipeTitle) == null) return false;
+		if (recipeDAO.getRecipeByTitle(recipeTitle) != null) return false;
 
 		recipeDAO.uploadRecipe(recipe);
 		
