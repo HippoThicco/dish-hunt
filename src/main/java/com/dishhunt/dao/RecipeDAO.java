@@ -10,7 +10,7 @@ import java.util.List;
 
 public class RecipeDAO {
 
-    public void insertRecipe(Recipe recipe) {
+    public void uploadRecipe(Recipe recipe) {
         String sql = """
             INSERT INTO recipes (user_id, dish_id, title, description, calories, instructions)
             VALUES (?, ?, ?, ?, ?, ?)
@@ -104,6 +104,53 @@ public class RecipeDAO {
         }
 
         return recipes;
+    }
+    
+    public List<Recipe> getRecipesByDishName(String dishName) {
+    	List<Recipe> recipes = new ArrayList<>();
+    	String sql = "SELECT r.* FROM recipes r JOIN dishes d ON r.dish_id = d.dish_id WHERE LOWER(d.dish_name) = LOWER(?) ORDER BY r.created_at DESC";
+    	
+    	try (Connection conn = DBConnection.getConnection();
+    			PreparedStatement stmt = conn.prepareStatement(sql)) {
+    		
+    		stmt.setString(1, dishName);
+    		ResultSet rs = stmt.executeQuery();
+    		
+    		while (rs.next()) {
+    			Recipe r = mapRecipeFromResultSet(rs);
+    			r.setIngredients(fetchIngredientsForRecipe(r.getId()));
+    			recipes.add(r);
+    		}
+    		
+    	} catch (SQLException e) {
+    		System.err.println("Failed to fetch dish's recipes:");
+    		e.printStackTrace();
+    	}
+    	
+    	return recipes;
+    }
+    
+    public Recipe getRecipeByTitle(String title) {
+    	String sql = "SELECT * FROM recipes WHERE LOWER(title) = LOWER(?) LIMIT 1";
+    	
+    	try (Connection conn = DBConnection.getConnection();
+    			PreparedStatement stmt = conn.prepareStatement(sql)) {
+    		
+    		stmt.setString(1,  title);
+    		ResultSet rs = stmt.executeQuery();
+    		
+    		while (rs.next()) {
+    			Recipe r = mapRecipeFromResultSet(rs);
+    			r.setIngredients(fetchIngredientsForRecipe(r.getId()));
+    			return r;
+    			}
+    		
+    	} catch (SQLException e) {
+    		System.err.println("No recipes by this title");
+    		e.printStackTrace();
+    	}
+    	
+    	return null;
     }
 
     private Recipe mapRecipeFromResultSet(ResultSet rs) throws SQLException {
