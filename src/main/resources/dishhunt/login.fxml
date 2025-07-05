@@ -1,0 +1,14 @@
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx"
+		xmlns:fx="https://javafx.com/fxml"
+		fx:controller="com.dishhunt.controller.LoginController">
+		
+		<Label text="Login" style="-fx-font-size: 24px;" />
+		
+		<TextField fx:id="usernameField" promptText="Username" />
+		<PasswordField fx:id="passwordField" promptText="Password" />
+		<Button text="Login" onAction="#handleLogin" />
+		<Button text="Register" onAction="#goToRegister" />
+		
+		<Label fx:id="messageLabel" text="" />
+		
+</VBox>
