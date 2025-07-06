@@ -11,9 +11,8 @@ public class UserDAO {
     public void insertUser(User user) {
         String sql = """
             INSERT INTO users (
-                username, hashed_password, name, bio,
-                nationality, join_date, profile_picture_path
-            ) VALUES (?, ?, ?, ?, ?, ?, ?)
+                username, hashed_password
+            ) VALUES (?, ?)
             """;
 
         try (Connection conn = DBConnection.getConnection();
@@ -21,14 +20,11 @@ public class UserDAO {
 
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getHashedPassword());
-            stmt.setString(3, user.getName());
-            stmt.setString(4, user.getBio());
-            stmt.setString(5, user.getNationality());
-            stmt.setDate(6, Date.valueOf(user.getJoinDate()));
-            stmt.setString(7, user.getProfilePicturePath());
 
             stmt.executeUpdate();
+
             System.out.println("✅ User inserted.");
+            
         } catch (SQLException e) {
             System.err.println("❌ Failed to insert user:");
             e.printStackTrace();
@@ -45,13 +41,10 @@ public class UserDAO {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                User user = new User(
-                    rs.getInt("user_id"),
-                    rs.getString("username"),
-                    rs.getString("hashed_password"),
-                    rs.getDate("join_date").toLocalDate()
-                );
-
+                User user = new User();
+                user.setId(rs.getInt("user_id"));
+                user.setUsername(rs.getString("username"));
+                user.setHashedPassword(rs.getString("hashed_password"));
                 user.setName(rs.getString("name"));
                 user.setBio(rs.getString("bio"));
                 user.setNationality(rs.getString("nationality"));
