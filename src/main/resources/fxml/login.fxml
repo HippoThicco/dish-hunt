@@ -11,6 +11,7 @@
       fx:controller="com.dishhunt.controller.LoginController"
       alignment="CENTER" spacing="10">
 
+	<Label text="Welcome to Dish Hunt!" />
     <Label text="Login" style="-fx-font-size: 24px;" />
 
     <TextField fx:id="usernameField" promptText="Username" />
