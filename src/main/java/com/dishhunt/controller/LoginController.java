@@ -29,6 +29,6 @@ public class LoginController {
 	
 	@FXML
 	public void goToRegister() {
-		// TODO: Switch scene to register.fxml
+		com.dishhunt.util.SceneManager.switchScene("register.fxml");
 	}
 }
