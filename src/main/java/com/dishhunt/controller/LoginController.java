@@ -20,8 +20,9 @@ public class LoginController {
 		
 		User user = authService.login(username, password);
 		if (user != null) {
+			com.dishhunt.util.SessionManager.setCurrentUser(user);
 			messageLabel.setText("Welcome, " + username + "!");
-			// TODO: load main app page
+			com.dishhunt.util.SceneManager.switchScene("home.fxml");
 		} else {
 			messageLabel.setText("Invalid credentials.");
 		}
