@@ -35,13 +35,28 @@
 		    
 		    <Separator />
 		    
-		    <VBox fx:id="recipesContainer" spacing="10">
-		    	<Label text="search results will appear here." style="-fx-font-size: 15px" >
-		    	    <VBox.margin>
-		    			<Insets left="100" right="100"/>
-					</VBox.margin>
-				</Label>
-		    </VBox>
+            <TableView fx:id="recipesTable" prefWidth="800" onMouseClicked="#handleRecipeDoubleClick">
+                <columns>
+                    <TableColumn fx:id="titleColumn" text="Title" prefWidth="200">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="title" />
+                        </cellValueFactory>
+                    </TableColumn>
+
+                    <TableColumn fx:id="descriptionColumn" text="Description" prefWidth="400">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="description" />
+                        </cellValueFactory>
+                    </TableColumn>
+
+                    <TableColumn fx:id="caloriesColumn" text="Calories" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="calories" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+            
 		</VBox>
 	</center>
 
