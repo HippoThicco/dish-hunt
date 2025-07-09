@@ -33,6 +33,8 @@
 					</VBox.margin>
 		    </HBox>
 		    
+		    <Label fx:id="searchStatusLabel" text="" style="-fx-font-size: 13px; -fx-test-fill: gray;" />
+		    
 		    <Separator />
 		    
             <TableView fx:id="recipesTable" prefWidth="800" onMouseClicked="#handleRecipeDoubleClick">
