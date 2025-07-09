@@ -20,6 +20,7 @@ public class HomeController {
 	@FXML private TableColumn<Recipe, String> titleColumn;
 	@FXML private TableColumn<Recipe, String> descriptionColumn;
 	@FXML private TableColumn<Recipe, Integer> caloriesColumn;
+	@FXML private Label searchStatusLabel;
 	
 	private final RecipeService recipeService = new RecipeService();
 	private final ObservableList<Recipe> recipeData = FXCollections.observableArrayList();
@@ -44,7 +45,8 @@ public class HomeController {
 		String query = searchField.getText().trim().toLowerCase();
 		
 		if (query.isEmpty() ) {
-			recipesContainer.getChildren().add(new Label("Please enter a dish name."));
+			recipeData.clear();
+			searchStatusLabel.setText("Please enter a dish name.");
 			return;
 		}
 		
