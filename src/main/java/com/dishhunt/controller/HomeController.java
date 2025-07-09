@@ -51,14 +51,12 @@ public class HomeController {
 		}
 		
 		List<Recipe> recipes = recipeService.getRecipesByDishName(query);
+		recipeData.setAll(recipes);
 		
 		if (recipes.isEmpty()) {
-			recipesContainer.getChildren().add(new Label("No recipes found for \"" + query + "\"."));
+			searchStatusLabel.setText("No recipes found for \"" + query + "\".");
 		} else {
-			for (Recipe recipe : recipes) {
-				Label recipeLabel = new Label(recipe.getTitle() + " - Calories: " + recipe.getCalories() + " - D");
-				recipesContainer.getChildren().add(recipeLabel);
-			}
+			searchStatusLabel.setText("Found " + recipes.size() + " recipe(s) for \"" + query + "\".");
 		}
 	}
 	
