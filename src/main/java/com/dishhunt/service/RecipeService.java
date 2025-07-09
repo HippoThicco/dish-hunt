@@ -38,4 +38,8 @@ public class RecipeService {
 	public Recipe getRecipeByTitle(String recipeTitle) {
 		return recipeDAO.getRecipeByTitle(recipeTitle);
 	}
+	
+	public List<Recipe> getAllRecipes() {
+		return recipeDAO.getAllRecipes();
+	}
 }
