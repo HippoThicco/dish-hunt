@@ -71,7 +71,10 @@ public class HomeController {
 		if (event.getClickCount() == 2 && !recipesTable.getSelectionModel().isEmpty()) {
 			Recipe selectedRecipe = recipesTable.getSelectionModel().getSelectedItem();
 			
-			
+			if (selectedRecipe != null) {
+				// TODO: load and display recipeDetail.fxml with selectedRecipe
+				System.out.println("Open details for recipe: " + selectedRecipe.getTitle());
+			}
 		}
 	}
 }
