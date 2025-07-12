@@ -1,5 +1,6 @@
 package com.dishhunt.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.dishhunt.model.Recipe;
@@ -10,9 +11,13 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class HomeController {
 	@FXML private TextField searchField;
@@ -72,9 +77,25 @@ public class HomeController {
 			Recipe selectedRecipe = recipesTable.getSelectionModel().getSelectedItem();
 			
 			if (selectedRecipe != null) {
-				// TODO: load and display recipeDetail.fxml with selectedRecipe
-				System.out.println("Open details for recipe: " + selectedRecipe.getTitle());
+				openRecipePage(selectedRecipe);
 			}
+		}
+	}
+	
+	private void openRecipePage(Recipe recipe) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/recipe.fxml"));
+			Parent root = loader.load();
+			
+			RecipeController controller = loader.getController();
+			controller.setRecipe(recipe);
+			
+			Stage stage = new Stage();
+			stage.setTitle("Recipe Details");
+			stage.setScene(new Scene(root, 800, 600));
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }
