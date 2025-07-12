@@ -10,14 +10,13 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.dishhunt.controller.RecipeController"
-      alignment="CENTER" spacing="25"
-      prefWidth="1000" prefHeight="800">
+      alignment="LEFT" spacing="25" padding="25">
 
-	<Label fx:id="recipeTitle" text="" style="-fx-font-size: 40px;" />
-	<Label fx:id="recipeDescription" text="" style="-fx-font-size: 25px;" />
-	<Label fx:id="recipeCalories" text="" style="-fx-font-size: 20px;" />
-	<Label fx:id="recipeIngredients" text="" style="-fx-font-size: 20px;" />
-	<Label fx:id="recipeInstructions" text="" style="-fx-font-size: 15px;" />
+	<Label fx:id="recipeTitle" text="" style="-fx-font-size: 40px; -fx-font-weight: bold;" />
+	<Label fx:id="recipeDescription" text="" style="-fx-font-size: 18px;" />
+	<Label fx:id="recipeCalories" text="" style="-fx-font-size: 18px;" />
+	<Label fx:id="recipeIngredients" text="" style="-fx-font-size: 15px;" />
+	<TextArea fx:id="recipeInstructions" prefWidth="600" prefHeight="300" editable="false" wrapText="true" />
 
     <Button text="Like" onAction="#likeRecipe" style="-fx-font-size: 15px;" />
     <Button text="Favourite" onAction="#favouriteRecipe" style="-fx-font-size: 15px;" />
