@@ -17,6 +17,7 @@
 	<Label fx:id="recipeDescription" text="" style="-fx-font-size: 25px;" />
 	<Label fx:id="recipeCalories" text="" style="-fx-font-size: 20px;" />
 	<Label fx:id="recipeIngredients" text="" style="-fx-font-size: 20px;" />
+	<Label fx:id="recipeInstructions" text="" style="-fx-font-size: 15px;" />
 
     <Button text="Like" onAction="#likeRecipe" style="-fx-font-size: 15px;" />
     <Button text="Favourite" onAction="#favouriteRecipe" style="-fx-font-size: 15px;" />
