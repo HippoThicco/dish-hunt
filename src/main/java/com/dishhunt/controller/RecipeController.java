@@ -10,7 +10,7 @@ public class RecipeController {
 	@FXML private Label recipeDescription;
 	@FXML private Label recipeCalories;
 	@FXML private Label recipeIngredients;
-	@FXML private Label recipeInstructions;
+	@FXML private TextArea recipeInstructions;
 	@FXML private TextField commentBox;
 	
 	public void setRecipe(Recipe recipe) {
