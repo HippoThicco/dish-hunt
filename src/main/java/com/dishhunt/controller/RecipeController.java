@@ -10,13 +10,14 @@ public class RecipeController {
 	@FXML private Label recipeDescription;
 	@FXML private Label recipeCalories;
 	@FXML private Label recipeIngredients;
-	@FXML
+	@FXML private Label recipeInstructions;
 	
 	public void setRecipe(Recipe recipe) {
 		recipeTitle.setText(recipe.getTitle());
 		recipeDescription.setText(recipe.getDescription());
 		recipeCalories.setText("" + recipe.getCalories());
 		recipeIngredients.setText("" + recipe.getIngredients());
+		recipeInstructions.setText(recipe.getInstructions());
 	}
 
 	@FXML
