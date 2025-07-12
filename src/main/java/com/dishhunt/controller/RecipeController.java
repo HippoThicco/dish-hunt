@@ -11,6 +11,7 @@ public class RecipeController {
 	@FXML private Label recipeCalories;
 	@FXML private Label recipeIngredients;
 	@FXML private Label recipeInstructions;
+	@FXML private TextField commentBox;
 	
 	public void setRecipe(Recipe recipe) {
 		recipeTitle.setText(recipe.getTitle());
