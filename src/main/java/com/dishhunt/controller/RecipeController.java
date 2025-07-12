@@ -16,7 +16,7 @@ public class RecipeController {
 	public void setRecipe(Recipe recipe) {
 		recipeTitle.setText(recipe.getTitle());
 		recipeDescription.setText(recipe.getDescription());
-		recipeCalories.setText("" + recipe.getCalories());
+		recipeCalories.setText("Calories: " + recipe.getCalories());
 		recipeIngredients.setText("" + recipe.getIngredients());
 		recipeInstructions.setText(recipe.getInstructions());
 	}
