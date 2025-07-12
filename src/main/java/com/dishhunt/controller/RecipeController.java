@@ -2,13 +2,28 @@ package com.dishhunt.controller;
 
 import com.dishhunt.model.Recipe;
 
-public class RecipeController {
-	
-	public void displayRecipe(Recipe recipe) {};
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
 
+public class RecipeController {
+	@FXML private Label recipeTitle;
+	@FXML private Label recipeDescription;
+	@FXML private Label recipeCalories;
+	@FXML private Label recipeIngredients;
+	
+	public void setRecipe(Recipe recipe) {
+		recipeTitle.setText(recipe.getTitle());
+		recipeDescription.setText(recipe.getDescription());
+		recipeCalories.setText("" + recipe.getCalories());
+		recipeIngredients.setText("" + recipe.getIngredients());
+	}
+
+	@FXML
 	public void likeRecipe() {}
 	
+	@FXML
 	public void favouriteRecipe() {};
 	
-	public void comment(String text) {};
+	@FXML
+	public void comment() {};
 }
