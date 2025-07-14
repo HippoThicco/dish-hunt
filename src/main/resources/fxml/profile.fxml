@@ -11,7 +11,8 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.dishhunt.controller.ProfileController"
       prefWidth="1000" prefHeight="800"
-      alignment="CENTER_LEFT" spacing="10" padding="10">
+      alignment="CENTER_LEFT" spacing="10"
+      style="-fx-padding: 30;">
 
     <Label text="Profile Page" style="-fx-font-size: 40px; -fx-font-weight: bold;" />
     
@@ -19,6 +20,7 @@
     <Label fx:id="nameLabel" text="" style="-fx-font-size: 15px;" />
     <Label fx:id="nationalityLabel" text="" style="-fx-font-size: 15px;" />
     <Label fx:id="joinDateLabel" text="" style="-fx-font-size: 15px;" />
+    <Label fx:id="bioLabel" text="" style="-fx-font-size: 15px;" />
     
     <Separator />
     
