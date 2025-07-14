@@ -11,8 +11,8 @@ public class UserDAO {
     public void insertUser(User user) {
         String sql = """
             INSERT INTO users (
-                username, hashed_password
-            ) VALUES (?, ?)
+                username, hashed_password, join_date
+            ) VALUES (?, ?, ?)
             """;
 
         try (Connection conn = DBConnection.getConnection();
@@ -20,6 +20,7 @@ public class UserDAO {
 
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getHashedPassword());
+            stmt.setDate(6, java.sql.Date.valueOf(LocalDate.now()));
 
             stmt.executeUpdate();
 
@@ -49,6 +50,11 @@ public class UserDAO {
                 user.setBio(rs.getString("bio"));
                 user.setNationality(rs.getString("nationality"));
 
+                Date dbDate = rs.getDate("join_date");
+                if (dbDate != null) {
+                    user.setJoinDate(dbDate.toLocalDate());
+                }
+                
                 return user;
             }
 
