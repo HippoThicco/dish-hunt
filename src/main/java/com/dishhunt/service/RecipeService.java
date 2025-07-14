@@ -42,4 +42,9 @@ public class RecipeService {
 	public List<Recipe> getAllRecipes() {
 		return recipeDAO.getAllRecipes();
 	}
+	
+	public List<Recipe> getFavouriteRecipesByUser(User user) {
+		return null;
+		//TODO: make favourites feature and implement this method
+	}
 }
