@@ -75,6 +75,7 @@ public class HomeController {
 	private void handleProfile() {
 		com.dishhunt.util.SceneManager.switchScene("profile.fxml");
 	}
+	
 	@FXML
 	private void handleRecipeDoubleClick(MouseEvent event) {
 		if (event.getClickCount() == 2 && !recipesTable.getSelectionModel().isEmpty()) {
