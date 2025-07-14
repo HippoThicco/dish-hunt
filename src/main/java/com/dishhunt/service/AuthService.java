@@ -20,6 +20,7 @@ public class AuthService {
 
         String hashedPassword = PasswordUtil.hash(password);
         User newUser = new User(username, hashedPassword);
+        newUser.setJoinDate(LocalDate.now());
         userDAO.insertUser(newUser);
 
         System.out.println("User registered.");
