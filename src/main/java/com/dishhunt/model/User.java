@@ -14,7 +14,6 @@ public class User {
 	private LocalDate joinDate;
 	private List<Recipe> contributions;
 	private List<Recipe> favourites;
-	private String profilePicturePath;
 	
 	public User(int id, String username, String hashedPassword, LocalDate joinDate) {
 		this.id = id;
@@ -92,14 +91,6 @@ public class User {
 
 	public void setFavourites(List<Recipe> favourites) {
 		this.favourites = favourites;
-	}
-
-	public String getProfilePicturePath() {
-		return profilePicturePath;
-	}
-
-	public void setProfilePicturePath(String profilePicturePath) {
-		this.profilePicturePath = profilePicturePath;
 	}
 
 	public void setId(int id) {
