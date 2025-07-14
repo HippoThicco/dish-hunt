@@ -48,7 +48,6 @@ public class UserDAO {
                 user.setName(rs.getString("name"));
                 user.setBio(rs.getString("bio"));
                 user.setNationality(rs.getString("nationality"));
-                user.setProfilePicturePath(rs.getString("profile_picture_path"));
 
                 return user;
             }
