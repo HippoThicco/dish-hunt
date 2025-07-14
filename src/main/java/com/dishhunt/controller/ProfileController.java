@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.dishhunt.model.Recipe;
+import com.dishhunt.model.User;
 import com.dishhunt.service.RecipeService;
 import com.dishhunt.util.SessionManager;
 
@@ -35,32 +36,76 @@ public class ProfileController {
 	@FXML private TableColumn<Recipe, Integer> caloriesColumn;
 	
 	private final RecipeService recipeService = new RecipeService();
-	private final ObservableList<Recipe> recipeData = FXCollections.observableArrayList();
+	private final ObservableList<Recipe> contributedRecipeData = FXCollections.observableArrayList();
+	private final ObservableList<Recipe> favouriteRecipeData = FXCollections.observableArrayList();
+
 	
 	@FXML
 	public void initialize() {
+		User user = SessionManager.getCurrentUser();
+		usernameLabel.setText(user.getUsername());
+		nameLabel.setText(user.getName());
+		nationalityLabel.setText(user.getNationality());
+		joinDateLabel.setText(user.getJoinDate().toString()); // assuming it's a LocalDate
+		bioLabel.setText(user.getBio());
+		
 		contributedtitleColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
 		contributeddescriptionColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescription()));
 		contributedcaloriesColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getCalories()).asObject());
         
-		contributedRecipesTable.setItems(recipeData);
+		contributedRecipesTable.setItems(contributedRecipeData);
 		loadContributedRecipes();
 		
 		titleColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
         descriptionColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescription()));
         caloriesColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getCalories()).asObject());
         
-        favouriteRecipesTable.setItems(recipeData);
+        favouriteRecipesTable.setItems(favouriteRecipeData);
         loadFavouriteRecipes();
 	}
 	
 	private void loadContributedRecipes() {
-		List<Recipe> userRecipes = recipeService.getRecipesByUser(SessionManager.getCurrentUser());
-		recipeData.setAll(userRecipes);
+	    List<Recipe> userRecipes = recipeService.getRecipesByUser(SessionManager.getCurrentUser());
+	    contributedRecipeData.setAll(userRecipes);
+	}
+
+	private void loadFavouriteRecipes() {
+	    List<Recipe> favouriteRecipes = recipeService.getFavouriteRecipesByUser(SessionManager.getCurrentUser());
+	    favouriteRecipeData.setAll(favouriteRecipes);
+	}
+
+	
+	@FXML
+	private void handleContributedDoubleClick(MouseEvent event) {
+		if (event.getClickCount() == 2 && !contributedRecipesTable.getSelectionModel().isEmpty()) {
+			Recipe selected = contributedRecipesTable.getSelectionModel().getSelectedItem();
+			if (selected != null) openRecipePage(selected);
+		}
+	}
+
+	@FXML
+	private void handleFavouriteDoubleClick(MouseEvent event) {
+		if (event.getClickCount() == 2 && !favouriteRecipesTable.getSelectionModel().isEmpty()) {
+			Recipe selected = favouriteRecipesTable.getSelectionModel().getSelectedItem();
+			if (selected != null) openRecipePage(selected);
+		}
 	}
 	
-	private void loadFavouriteRecipes() {
-		List<Recipe> favouriteRecipes = recipeService.getAllRecipes();
-		recipeData.setAll(favouriteRecipes);
+	private void openRecipePage(Recipe recipe) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/recipe.fxml"));
+			Parent root = loader.load();
+			
+			RecipeController controller = loader.getController();
+			controller.setRecipe(recipe);
+			
+			Stage stage = new Stage();
+			stage.setTitle("Recipe Details");
+			stage.setScene(new Scene(root, 800, 600));
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
+
 }
