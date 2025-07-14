@@ -1,77 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-	  fx:controller="com.dishhunt.controller.ProfileController"
-	  prefWidth="1000" prefHeight="800"
-	  alignment="CENTER_LEFT" spacing="10" padding="10">
-	  
-	  <Label text="Profile Page" style:"-fx-font-size: 40px; -fx-font-weight: bold;" spacing="20" />
-	  <Label fx:id="usernameLabel" text="" style:"-fx-font-size: 20px;" />
-	  <Label fx:id="nameLabel" text="" style:"-fx-font-size: 15px;" />
-  	  <Label fx:id="nationalityLabel" text="" style:"-fx-font-size: 15px;" />
-  	  <Label fx:id="joinDateLabel" text="" style:"-fx-font-size: 15px;" />
-  	  
-  	  <Separator />
-  	  
-  	  <Label text="Contributed Recipes" style:"-fx-font-size: 15px;" />
-  	  
-  	  <TableView fx:id="contributedRecipesTable" prefWidth="800" onMouseClicked="#handleRecipeDoubleClick">
+      fx:controller="com.dishhunt.controller.ProfileController"
+      prefWidth="1000" prefHeight="800"
+      alignment="CENTER_LEFT" spacing="10" padding="10">
+
+    <Label text="Profile Page" style="-fx-font-size: 40px; -fx-font-weight: bold;" />
+    
+    <Label fx:id="usernameLabel" text="" style="-fx-font-size: 20px;" />
+    <Label fx:id="nameLabel" text="" style="-fx-font-size: 15px;" />
+    <Label fx:id="nationalityLabel" text="" style="-fx-font-size: 15px;" />
+    <Label fx:id="joinDateLabel" text="" style="-fx-font-size: 15px;" />
+    
+    <Separator />
+    
+    <Label text="Contributed Recipes" style="-fx-font-size: 15px;" />
+    
+    <TableView fx:id="contributedRecipesTable" prefWidth="800" onMouseClicked="#handleContributedDoubleClick">
         <columns>
             <TableColumn fx:id="contributedtitleColumn" text="Title" prefWidth="200">
                 <cellValueFactory>
                     <PropertyValueFactory property="title" />
                 </cellValueFactory>
             </TableColumn>
-
             <TableColumn fx:id="contributeddescriptionColumn" text="Description" prefWidth="400">
                 <cellValueFactory>
                     <PropertyValueFactory property="description" />
                 </cellValueFactory>
             </TableColumn>
-
             <TableColumn fx:id="contributedcaloriesColumn" text="Calories" prefWidth="100">
                 <cellValueFactory>
                     <PropertyValueFactory property="calories" />
                 </cellValueFactory>
             </TableColumn>
         </columns>
-	</TableView>
-  	  
-  	<Label text="Favourite Recipes" style:"-fx-font-size: 15px;" />
-  	
-	<TableView fx:id="favouriteRecipesTable" prefWidth="800" onMouseClicked="#handleRecipeDoubleClick">
+    </TableView>
+
+    <Label text="Favourite Recipes" style="-fx-font-size: 15px;" />
+    
+    <TableView fx:id="favouriteRecipesTable" prefWidth="800" onMouseClicked="#handleFavouriteDoubleClick">
         <columns>
             <TableColumn fx:id="titleColumn" text="Title" prefWidth="200">
                 <cellValueFactory>
                     <PropertyValueFactory property="title" />
                 </cellValueFactory>
             </TableColumn>
-
             <TableColumn fx:id="descriptionColumn" text="Description" prefWidth="400">
                 <cellValueFactory>
                     <PropertyValueFactory property="description" />
                 </cellValueFactory>
             </TableColumn>
-
             <TableColumn fx:id="caloriesColumn" text="Calories" prefWidth="100">
                 <cellValueFactory>
                     <PropertyValueFactory property="calories" />
                 </cellValueFactory>
             </TableColumn>
         </columns>
-	</TableView>
-</VBox
+    </TableView>
+
+</VBox>
