@@ -44,10 +44,10 @@ public class ProfileController {
 	public void initialize() {
 		User user = SessionManager.getCurrentUser();
 		usernameLabel.setText(user.getUsername());
-		nameLabel.setText(user.getName());
-		nationalityLabel.setText(user.getNationality());
-		joinDateLabel.setText(user.getJoinDate().toString()); // assuming it's a LocalDate
-		bioLabel.setText(user.getBio());
+		nameLabel.setText("Name: " + user.getName());
+		nationalityLabel.setText("Nationality: " + user.getNationality());
+		joinDateLabel.setText("Joined: " + user.getJoinDate());
+		bioLabel.setText("Bio: " + user.getBio() != null ? user.getBio() : "empty");
 		
 		contributedtitleColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
 		contributeddescriptionColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescription()));
@@ -70,7 +70,7 @@ public class ProfileController {
 	}
 
 	private void loadFavouriteRecipes() {
-	    List<Recipe> favouriteRecipes = recipeService.getFavouriteRecipesByUser(SessionManager.getCurrentUser());
+	    List<Recipe> favouriteRecipes = recipeService.getAllRecipes();
 	    favouriteRecipeData.setAll(favouriteRecipes);
 	}
 
